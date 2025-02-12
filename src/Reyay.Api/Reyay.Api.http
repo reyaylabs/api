@@ -1,0 +1,6 @@
+@Reyay.Api_HostAddress = http://localhost:5178
+
+GET {{Reyay.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

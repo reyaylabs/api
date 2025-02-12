@@ -1,0 +1,61 @@
+openapi: 3.1.1
+info:
+  version: '1.0.0'
+  title: 'Reyay'
+tags:
+  - name: Things
+    description: All the Things
+paths:
+  '/things':
+    get:
+      parameters:
+        - name: since
+          in: query
+          description: Timestamp to restore from
+          schema:
+            type: string
+            format: date-time
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          description: Unique identifier
+          type: string
+          format: uuid
+        email:
+          description: User email
+          type: string
+        publicKey:
+          description: User public key
+          type: string
+          contentEncoding: base64
+          contentMediaType: 'application/x-pkcs12'
+    Thing:
+      type: object
+      properties:
+        id:
+          description: Unique identifier
+          type: string
+          format: uuid
+        timestamp:
+          description: Date and time of creation
+          type: string
+          format: date-time
+        origin:
+          description: Where the Thing came from
+          type: string
+        type:
+          description: The MIME type of the Thing
+          type: string
+        tags:
+          description: Arbitrary tags for searching and organizing
+          type: array
+          items:
+            type: string
+      required:
+        - id
+        - timestamp
+        - origin
+        - type
